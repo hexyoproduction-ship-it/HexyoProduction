@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Location Viewer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+    .leaflet-tooltip.driver-label {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      font-weight: bold;
+      font-size: 14px;
+      color: #000;
+      text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    const markers = {};
+
+    // --- NEW: Flag to control one-time zoom ---
+    let initialZoomDone = false;
+
+    const onlineIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+    });
+    const offlineIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+    });
+
+    const socket = io();
+
+    // --- MODIFIED: autoZoom function ---
+    function autoZoom() {
+      // Only run this function if the initial zoom hasn't been done yet
+      if (initialZoomDone) {
+        return;
+      }
+      
+      const activeMarkers = [];
+      for (const id in markers) {
+        if (markers[id].getIcon() === onlineIcon) {
+          activeMarkers.push(markers[id]);
+        }
+      }
+
+      if (activeMarkers.length > 0) {
+        const group = new L.featureGroup(activeMarkers);
+        
+        // --- KEY CHANGE: Use fitBounds with a maxZoom option ---
+        // This prevents the map from zooming in too closely if there's only one marker.
+        // A value of 13-15 is usually good for a "city level" view.
+        map.fitBounds(group.getBounds().pad(0.5), { maxZoom: 14 });
+        
+        // Set the flag to true so this function won't run again automatically
+        initialZoomDone = true;
+      }
+    }
+    
+    // --- Add a listener to reset the zoom flag if the user interacts with the map ---
+    // This gives them back control.
+    map.on('dragstart zoomstart', function() {
+        initialZoomDone = true;
+    });
+
+    socket.on('locationUpdated', (data) => {
+      const { id, lat, lon } = data;
+      
+      // Use the socket ID as a unique key for the marker, but display the text "Person"
+      const markerKey = data.socketId || id; // We'll adapt the server to send this
+
+      if (markers[markerKey]) {
+        markers[markerKey].setLatLng([lat, lon]);
+        markers[markerKey].setIcon(onlineIcon);
+      } else {
+        markers[markerKey] = L.marker([lat, lon], { icon: onlineIcon }).addTo(map)
+          .bindTooltip(id, { // The displayed text is still 'Person'
+            permanent: true, direction: 'top', offset: [0, -41], className: 'driver-label'
+          });
+      }
+      // Attempt to auto-zoom on every update, but the flag will stop it after the first time.
+      autoZoom();
+    });
+
+    socket.on('driverDisconnected', (data) => {
+      const markerKey = data.socketId || data.id;
+      if (markers[markerKey]) {
+        markers[markerKey].setIcon(offlineIcon);
+      }
+      // We don't need to auto-zoom on disconnect anymore
+    });
+
+    socket.on('connect', () => console.log('Connected to WebSocket server.'));
+  </script>
+</body>
+</html>

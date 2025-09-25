@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.form-container {
+  flex: 1;
+  max-width: 480px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: ;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  height: 22px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+p a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #444;
+}
+
+.divider span {
+  padding: 0 1rem;
+  color: #aaa;
+}
+
+input {
+  background: #1e1e1e;
+  border: 1px solid #C8F051;
+  color: #fff;
+  padding: 0.75rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* === NEW/MODIFIED CSS FOR PASSWORD INPUT === */
+.input-group {
+  margin: 0 0 10px 0; /* Adjusted margin to be similar to other inputs, primarily bottom margin */
+}
+
+.input-group label {
+  display: block; /* Makes the label take its own line */
+  margin-bottom: 8px; /* Space between label and input-wrapper */
+  font-size: 0.9rem;
+  color: #ccc; /* Consistent with paragraph text */
+  font-weight: normal; /* Or bold if you prefer */
+}
+
+.input-wrapper {
+  position: relative; /* For absolute positioning of the eye icon */
+  display: flex; /* Helps if you had other non-absolute elements to align */
+  align-items: center; /* Vertically aligns flex items (like the input field itself) */
+  width: 100%;
+}
+
+/* Specific styling for the password input field within the wrapper */
+.input-wrapper input {
+  padding-right: 45px; /* Make space for the eye icon (icon width 24px + ~20px spacing) */
+  /* Other styles like width, background, border, color are inherited from the general input rule above */
+  margin-bottom: 0; /* Margin is handled by .input-group */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px; /* Adjust for desired horizontal position */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the icon */
+  cursor: pointer;
+  color: currentColor; /* Inherits text color (white), keeping original icon color */
+  display: flex; /* Helps center SVGs if they have varying internal alignment */
+  align-items: center;
+}
+/* === END NEW/MODIFIED CSS === */
+
+.btn-submit {
+  width: 100%;
+  background: #fff;
+  color: #000;
+  padding: 0.75rem;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.links {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.links a {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+  text-decoration: underline;
+}
+
+.terms {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 2rem;
+}
+
+.terms a {
+  color: #aaa;
+  text-decoration: underline;
+}
+
+.cover {
+  flex: 1;
+  background: url('https://uploads.onecompiler.io/43haghwug/43hexzw97/weblog2%20copy.png') center/cover no-repeat;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .cover {
+    display: none;
+  }
+
+  .form-container {
+    max-width: 100%;
+    padding: 2rem;
+  }
+}

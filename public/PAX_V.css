@@ -1,0 +1,208 @@
+/* REFINEMENT NOTE: Original PAX_V.css */
+/* body { ... } */
+/* .verify-container { ... } */
+/* ... */
+
+/* --- General Body Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    /* height: 100%; -- REFINEMENT: min-height: 100vh is often better for full page flex/grid containers */
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex; /* To make .verify-container take full height if needed */
+    background-color: #000000;
+    color: #FFFFFF; /* REFINEMENT: Default text color for this page */
+}
+
+/* --- Verification Page Layout --- */
+.verify-container {
+    display: flex;
+    width: 100%; /* REFINEMENT: Use 100% instead of 100vw to avoid potential scrollbar issues */
+    /* height: 100vh; -- REFINEMENT: Inherit height or use flex-grow if body is flex container */
+    flex-grow: 1; /* REFINEMENT: If body is display:flex, this will make it take available space */
+}
+
+.container { /* This is the content box for OTP */
+    width: 500px;
+    padding: 24px 40px 40px; /* REFINEMENT: Ordered padding */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: top; -- REFINEMENT: Invalid. Use 'flex-start'. */
+    justify-content: flex-start;
+    background-color: #000000; /* Redundant if parent has it */
+    box-sizing: border-box; /* REFINEMENT: Consistent box-sizing */
+}
+
+.cover-image {
+    flex-grow: 1;
+    background: url('https://assets.onecompiler.app/42n876cmq/439nez9kf/Screenshot%202025-02-19%20232125.PNG') no-repeat center center/cover;
+}
+
+/* --- Header and Back Button --- */
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; /* REFINEMENT: Increased margin */
+}
+
+.header img { /* Paxful logo image */
+    width: 30px; /* Explicitly set, though HTML has it */
+    height: auto;
+}
+
+.logo-text { /* "paxful" text next to logo image */
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 10px; /* REFINEMENT: Increased margin */
+    color: #FFFFFF;
+}
+
+.back-button { /* REFINEMENT: Renamed from .back */
+    display: inline-flex; /* REFINEMENT: Use inline-flex for tight wrapping */
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px; /* REFINEMENT: Adjusted margin */
+    color: #FFFFFF;
+    font-size: 16px; /* REFINEMENT: Set base font size */
+    transition: color 0.2s ease;
+}
+.back-button:hover {
+    color: #C8F051; /* REFINEMENT: Add hover effect */
+}
+
+.back-icon {
+    font-size: 24px; /* REFINEMENT: Larger icon */
+    margin-right: 0px; /* REFINEMENT: Increased margin */
+    line-height: 0.8; /* REFINEMENT: Ensure proper alignment */
+}
+
+/* --- Typography for Verification Info --- */
+.verification-heading { /* REFINEMENT: Renamed from .verification */
+    font-size: 28px; /* REFINEMENT: Adjusted size */
+    margin-top: 20px; /* REFINEMENT: Adjusted from 40px */
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.authenticator-info { /* REFINEMENT: Renamed from .authenticator */
+    font-size: 14px; /* REFINEMENT: Increased size slightly */
+    color: #AAAAAA; /* REFINEMENT: Lighter grey for better readability on black */
+    line-height: 1.6; /* REFINEMENT: Improved line spacing */
+    margin-bottom: 30px; /* REFINEMENT: Adjusted from 40px */
+}
+.authenticator-info strong {
+    color: #FFFFFF; /* Make the email stand out */
+    font-weight: normal; /* If email itself isn't meant to be bold, or keep bold if intended */
+}
+
+
+/* --- OTP Input Area --- */
+#otpForm label { /* Label for "Confirmation Code" */
+    display: block;
+    color: #808080;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.otp-container {
+    display: flex;
+    /* justify-content: margin-left; -- REFINEMENT: Invalid value. Use flex-start, center, or space-between. */
+    justify-content: center; /* REFINEMENT: Center the OTP inputs */
+    gap: 15px; /* REFINEMENT: Reduced gap from 15px for a tighter look */
+    margin-top: 10px;
+    margin-bottom: 20px; /* REFINEMENT: Add some space below OTP inputs */
+}
+
+.otp-input {
+    width: 58px;  /* REFINEMENT: Adjusted for 6 digits to fit well */
+    height: 70px; /* REFINEMENT: Adjusted height */
+    font-size: 28px; /* REFINEMENT: Adjusted font size */
+    text-align: center;
+    border-radius: 15px; /* REFINEMENT: Reduced radius */
+    border: 1px solid #333333; /* REFINEMENT: Slightly more visible default border */
+    outline: none;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: #E0E0E0; /* REFINEMENT: Lighter text color for input */
+    background-color: #141414;
+    caret-color: #C8F051;
+    box-sizing: border-box;
+}
+
+.otp-input:focus {
+    border-color: #C8F051;
+    box-shadow: 0 0 8px rgba(200, 240, 81, 0.5); /* REFINEMENT: Subtle glow */
+}
+
+/* REFINEMENT: Style for disabled OTP inputs */
+.otp-input:disabled {
+    background-color: #222;
+    border-color: #444;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* --- Error Message --- */
+.error-message { /* #error-message */
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    min-height: 1.2em; /* REFINEMENT: Prevent layout jump when message appears */
+    /* display: none; -- REFINEMENT: JS will control visibility by adding/removing content. Empty p takes no visual space. */
+    text-align: center; /* REFINEMENT: Center error message */
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .verify-container {
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: top; -- REFINEMENT: 'flex-start' is the correct value */
+        justify-content: flex-start;
+        /* background-color: #000000; -- Already set */
+    }
+        
+    .container { /* Content box */
+        width: 93%; /* As original */
+        max-width: 500px; /* REFINEMENT: Ensure it doesn't get too wide */
+        /* justify-content: center; -- REFINEMENT: This is for flex children, not the box itself */
+        padding: 5px 5px; /* As original */
+        /* display: flex; -- REFINEMENT: Already flex from base style */
+        margin: 40px 0; /* REFINEMENT: Vertical margin */
+    }
+
+    .cover-image {
+        display: none; /* Hide cover image on small screens - as original */
+    }
+
+    .otp-input { /* Adjust OTP inputs for smaller screens */
+        width: 20%;
+        height: 75px;
+        font-size: 24px;
+    }
+    .otp-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px 5px;
+        margin: 20px 0;
+    }
+    .header img { width: 25px; }
+    .logo-text { font-size: 28px; }
+    .verification-heading { font-size: 24px; }
+    .authenticator-info { font-size: 13px; }
+
+    .otp-input {
+        width: 20%; /* Smaller OTP inputs for very small screens */
+        height: 70px;
+        font-size: 20px;
+        border-radius: 15px;
+    }
+    .otp-container {
+        gap: 10px; /* Tighter gap */
+    }
+}

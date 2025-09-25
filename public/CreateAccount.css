@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.form-section {
+  flex: 1;
+  padding: 40px;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: ;
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 3.0rem;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  height: 22px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.social-btn {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  border-radius: 0px;
+}
+
+.social-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: #444;
+  top: 50%;
+  width: 40%;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #888;
+}
+
+/* General input styles (apply to email and password) */
+input[type="email"],
+.input-wrapper input { /* Target general email and the input within .input-wrapper */
+  width: 100%;
+  padding: 15px; /* Base padding */
+  background: #222;
+  border: 1px solid #C8F051;
+  color: white;
+  border-radius: 0px;
+  font-family: Arial, sans-serif; /* Ensure font consistency */
+  font-size: 1rem; /* Ensure font size consistency */
+}
+
+/* Remove bottom margin from email input if .input-group handles it */
+input[type="email"] {
+  margin-bottom: 10px; /* Or adjust based on .input-group's margin */
+}
+
+
+/* === NEW/MODIFIED CSS FOR PASSWORD INPUT === */
+.input-group {
+  margin: 0 0 10px 0; /* Adjusted margin to be similar to other inputs, primarily bottom margin */
+}
+
+.input-group label {
+  display: block; /* Makes the label take its own line */
+  margin-bottom: 8px; /* Space between label and input-wrapper */
+  font-size: 0.9rem;
+  color: #ccc; /* Consistent with paragraph text */
+  font-weight: normal; /* Or bold if you prefer */
+}
+
+.input-wrapper {
+  position: relative; /* For absolute positioning of the eye icon */
+  display: flex; /* Helps if you had other non-absolute elements to align */
+  align-items: center; /* Vertically aligns flex items (like the input field itself) */
+  width: 100%;
+}
+
+/* Specific styling for the password input field within the wrapper */
+.input-wrapper input {
+  padding-right: 45px; /* Make space for the eye icon (icon width 24px + ~20px spacing) */
+  /* Other styles like width, background, border, color are inherited from the general input rule above */
+  margin-bottom: 0; /* Margin is handled by .input-group */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px; /* Adjust for desired horizontal position */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the icon */
+  cursor: pointer;
+  color: currentColor; /* Inherits text color (white), keeping original icon color */
+  display: flex; /* Helps center SVGs if they have varying internal alignment */
+  align-items: center;
+}
+/* === END NEW/MODIFIED CSS === */
+
+
+.requirements {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: #aaa;
+  list-style: none;
+  line-height: 2.0;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.terms {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 10px;
+}
+
+.image-section {
+  flex: 1;
+  background: url('https://uploads.onecompiler.io/43haghwug/43hexy5kg/WEBCOVER.5.11X.png') no-repeat center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image-section {
+    display: none;
+  }
+
+  .form-section {
+    max-width: 100%;
+    padding: 30px 20px;
+  }
+}

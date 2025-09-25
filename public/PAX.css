@@ -1,0 +1,427 @@
+/* REFINEMENT NOTE: Original PAX.css */
+/* body, html { ... } */
+/* .login-container { ... } */
+/* ... */
+
+/* --- General Styles --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    /* REFINEMENT NOTE: display: flex on body and html for a full-page component container
+       like login-container is one way. Alternative for centering login-container:
+       body { display: grid; place-items: center; min-height: 100vh; }
+       Then login-container doesn't need 100vh/100vw.
+       Keeping original approach as it works for the layout.
+    */
+    display: flex; /* As per original */
+    background-color: #000000; /* As per original */
+}
+
+/* --- Login Page Layout --- */
+.login-container {
+    display: flex;
+    min-height: 100vh; /* REFINEMENT: Use min-height for flexibility, original had height */
+    width: 100vw;      /* REFINEMENT NOTE: vw units can sometimes cause overflow if scrollbars appear. 100% might be safer. */
+    background-color: #000000; /* Redundant if body has it, but harmless */
+}
+
+.login-box {
+    width: 500px; /* Fixed width as per original */
+    padding: 5px 40px;
+    margin: 10px 0; /* REFINEMENT: Simplified padding, original: padding-block-start: 20px; padding-left: 40px; padding-right: 40px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: top; REFINEMENT: 'top' is not a valid value. Use 'flex-start'. */
+    justify-content: flex-start;
+    background-color: #000000; /* Redundant */
+    box-sizing: border-box; /* REFINEMENT: Include padding and border in the element's total width and height */
+}
+
+.cover-image {
+    flex-grow: 1; /* Takes remaining space */
+    background: url('https://uploads.onecompiler.io/42n876cmq/439nez9kf/Screenshot%202025-02-19%20232125.PNG') no-repeat center center/cover;
+}
+
+/* --- Logo and Typography --- */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 100px; /* REFINEMENT: Adjusted from 88px, check visual */
+}
+
+.logo img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px; /* REFINEMENT: Increased margin */
+}
+
+h2 {
+    margin: 0 0 5px 0; /* REFINEMENT: Added bottom margin */
+    font-size: 32px;
+    color: #FFFFFF;
+}
+
+p {
+    margin-top: 0; /* REFINEMENT: Reset top margin if h2 has bottom margin */
+    margin-bottom: 20px; /* REFINEMENT: Add consistent bottom margin for paragraphs under h2 */
+    font-size: 14px;
+    color: #808080;
+}
+
+p a {
+    color: #808080; /* Inherits color, can be more specific e.g. #A0A0A0 */
+    text-decoration: underline;
+}
+p a:hover {
+    color: #C8F051; /* REFINEMENT: Add hover color */
+}
+
+/* --- Form Elements --- */
+.input-group {
+    margin-bottom: 20px; /* REFINEMENT: Consistent spacing, original: margin: 15px 0; */
+}
+
+label {
+    display: block; /* REFINEMENT: Make label take full width */
+    color: #808080;
+    font-size: 15px;
+    margin-bottom: 8px; /* REFINEMENT: Space between label and input */
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex; /* Used for aligning icon, could be block if icon is absolutely positioned within */
+    align-items: center;
+    /* width: 100%; -- Redundant if input is 100% */
+}
+
+.input-wrapper input[type="text"],
+.input-wrapper input[type="password"] {
+    width: 100%;
+    background-color: #141414;
+    border: 1px solid #141414;
+    color: #fff;
+    padding: 16px;
+    padding-right: 45px; /* REFINEMENT: Ensure space for the eye icon */
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    caret-color: #C8F051;
+    box-sizing: border-box; /* REFINEMENT: Consistent box sizing */
+}
+
+.input-wrapper input[type="text"]:focus,
+.input-wrapper input[type="password"]:focus {
+    border-color: #C8F051;
+}
+
+/* REFINEMENT: Style for placeholder text */
+.input-wrapper input::placeholder {
+    color: #555;
+    opacity: 1; /* Firefox */
+}
+.input-wrapper input:-ms-input-placeholder { color: #555; } /* IE 10-11 */
+.input-wrapper input::-ms-input-placeholder { color: #555; } /* Edge */
+
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%; /* REFINEMENT: Center icon vertically */
+    transform: translateY(-50%); /* REFINEMENT: Center icon vertically */
+    cursor: pointer;
+    color: #777; /* SVG stroke color will be inherited if not set in SVG */
+}
+.eye-icon svg { /* Ensure SVGs within are sized correctly if needed */
+    display: block; /* Removes any extra space below SVG if it's inline */
+}
+
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    margin-top: 8px; /* REFINEMENT: Consistent spacing */
+    color: #4D4D4D;
+    text-decoration: underline;
+}
+.forgot-password:hover {
+    color: #C8F051; /* REFINEMENT: Add hover color */
+}
+
+/* --- Buttons --- */
+/* This button is used for the dblclick to HEXYO.html. It's styled to be invisible. */
+.btn {
+    width: 100px; /* As per original */
+    padding: 5px; /* As per original */
+    background-color: #000000; /* As per original - invisible on black bg */
+    color: #000000;      /* As per original - invisible */
+    border: none;         /* As per original - invisible */
+    border-radius: 20px;  /* As per original */
+    font-size: 16px;      /* As per original */
+    margin-top: 0px;      /* As per original */
+    transition: all 0.3s ease; /* As per original */
+    float: right;         /* As per original */
+    cursor: default;      /* As per original */
+    /* REFINEMENT NOTE: This element is functionally a hidden trigger. */
+}
+
+.sign-in-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #C8F051;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold; /* REFINEMENT: Make text bolder */
+    cursor: pointer;
+    margin-top: 20px; /* REFINEMENT: Increased margin */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* REFINEMENT: Separate transitions */
+}
+
+.sign-in-btn:hover {
+    background-color: #b0d640; /* REFINEMENT: Slightly darker shade for hover */
+    transform: scale(0.98); /* Original effect */
+}
+.sign-in-btn:active {
+    transform: scale(0.96); /* REFINEMENT: Add active state feedback */
+}
+
+
+/* --- Puzzle Popup --- */
+.popup { /* This is #puzzlePopup */
+    display: none; /* Initially hidden, JS will show it */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7); /* REFINEMENT: Start smaller for zoom-in */
+    width: 350px; /* REFINEMENT: Original was 20%, which is very small on large screens. Fixed width is better. */
+    max-width: 90%; /* REFINEMENT: Ensure it doesn't exceed screen width on mobile */
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* REFINEMENT: Softer shadow */
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 2000; /* REFINEMENT: Ensure it's above other content */
+    opacity: 0; /* REFINEMENT: Start transparent for fade-in */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.popup.active { /* JS will add this class to show */
+    display: block; /* Or flex, grid etc. if needed for children alignment */
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+/* REFINEMENT NOTE: Original keyframes zoomIn/zoomOut are effectively replaced by the transition on .popup and .popup.active */
+
+.popup .background { /* Puzzle background image container */
+    position: relative;
+    width: 100%;
+    height: 150px; /* REFINEMENT: Adjusted height */
+    /* background: url(...) -- Original has this. It's better to use an <img> tag for semantics if the image is content, or keep if purely decorative */
+    background-image: url('https://uploads.onecompiler.io/42n876cmq/439nez9kf/Screenshot%202025-02-19%20232125.PNG'); /* Keeping as background-image */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 4px; /* REFINEMENT: Slightly rounded corners for the image area */
+    margin-bottom: 20px;
+}
+
+.popup .puzzle-placeholder {
+    position: absolute;
+    top: 25px; /* REFINEMENT: Adjusted position. This needs to match puzzle piece. */
+    left: 200px; /* REFINEMENT: Adjusted. This is the target position for the piece. Max slider value should match this. */
+    width: 80px;  /* REFINEMENT: Adjusted size */
+    height: 80px; /* REFINEMENT: Adjusted size */
+    opacity: 0.5;
+    /* background-color: rgba(0,0,0,0.2); REFINEMENT: Could add a placeholder bg color */
+    border: 1px dashed #555; /* REFINEMENT: Dashed border for placeholder */
+}
+
+.popup .puzzle-piece {
+    position: absolute;
+    top: 25px;  /* REFINEMENT: Match placeholder's top */
+    left: 0;    /* Initial position, JS will move it */
+    width: 80px;   /* REFINEMENT: Match placeholder's width */
+    height: 80px;  /* REFINEMENT: Match placeholder's height */
+    cursor: grab;
+    /* filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)); REFINEMENT: Add shadow to piece */
+}
+.popup .puzzle-piece:active {
+    cursor: grabbing;
+}
+
+
+.popup .slider-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin-right: 35px; -- REFINEMENT: Removed, let it be full width */
+}
+
+.popup .slider-container input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    height: 8px; /* REFINEMENT: Adjusted slider track height */
+    border-radius: 5px;
+    outline: none;
+    padding: 0; /* REFINEMENT: Ensure no extra padding */
+}
+
+/* WebKit (Chrome, Safari) specific slider thumb */
+.popup .slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;  /* REFINEMENT: Adjusted size */
+    height: 30px; /* REFINEMENT: Adjusted size */
+    background: #007bff; /* Original blue */
+    border-radius: 5px; /* REFINEMENT: Rounded rectangle thumb */
+    cursor: pointer;
+    /* REFINEMENT NOTE: The ::after pseudo-element for arrow was complex and not standard.
+       Simpler thumb is more reliable. If arrow is critical, an SVG icon in the thumb is better.
+       For now, removed the ::after for simplicity and cross-browser appearance.
+    */
+    /* transition: background-color 0.2s ease; */
+}
+/* Firefox specific slider thumb */
+.popup .slider-container input[type="range"]::-moz-range-thumb {
+    width: 40px;
+    height: 30px;
+    background: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none; /* REFINEMENT: Remove default border for FF */
+}
+/* IE specific slider thumb */
+.popup .slider-container input[type="range"]::-ms-thumb {
+    width: 40px;
+    height: 30px;
+    background: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.popup .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* REFINEMENT: Consistent margin */
+}
+.popup .controls button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+.popup .controls button:hover {
+    background: #e0e0e0;
+}
+
+
+
+/* Cookie Banner Styles */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+#cookie-banner a {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+#cookie-banner button {
+  background-color: #ccff00;
+  color: #000;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 25px;
+}
+
+@media (min-width: 600px) {
+  #cookie-banner button {
+    margin-top: 0;
+  }
+}
+
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        align-items: center; /* Centers login-box when stacked */
+        justify-content: flex-start; /* Align to top */
+        /* background-color: #000000; -- Already set */
+    }
+    
+    .login-box {
+        width: 93%; /* More responsive width */
+        max-width: 500px; /* REFINEMENT: Max width for login box on mobile */
+        padding: 5px 5px; /* REFINEMENT: Adjusted padding for mobile */
+        margin: 10px 0; /* REFINEMENT: Vertical margin, horizontal auto handled by align-items on parent */
+        /* justify-content: center; -- REFINEMENT: This applies to flex children, not the box itself. */
+        /* display: flex; -- REFINEMENT: Already flex from base style. */
+    }
+
+    .cover-image {
+        display: none; /* Hide cover image on small screens - as original */
+    }
+
+    .popup { /* #puzzlePopup on mobile */
+        width: 90%; /* As original */
+        padding: 20px;
+    }
+    .popup .background {
+        height: 120px; /* Smaller puzzle bg on mobile */
+    }
+    .popup .puzzle-placeholder, .popup .puzzle-piece {
+        width: 60px; height: 60px; top: 15px; /* Adjust piece/placeholder for smaller bg */
+    }
+    .popup .puzzle-placeholder { left: 200px; } /* Adjust target for smaller puzzle */
+    /* REFINEMENT NOTE: Max slider value in JS (PAX.js) should be updated if puzzle target 'left' changes.
+       Original was 250 for target. If placeholder is at 150, slider max should be ~150.
+       For now, keeping CSS visual and JS logic separate.
+    */
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 5px 5px;
+        margin: 10px 0;
+    }
+    h2 { font-size: 28px; }
+    .logo { font-size: 25px; margin-bottom: 100px; }
+    .logo img { width: 25px; height: 25px; }
+
+    .popup { padding: 15px; }
+    .popup .controls button { font-size: 14px; padding: 6px 10px; }
+}

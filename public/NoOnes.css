@@ -1,4 +1,4 @@
-    /* --- Base Setup --- */
+/* --- Base Setup --- */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
@@ -10,7 +10,7 @@
       /* Prevents scrollbars */
     }
 
-    /* --- Background Image and Blur Effect --- */
+    /* --- Background Iframe and Blur Effect --- */
     #background {
       position: fixed;
       top: 0;
@@ -19,11 +19,10 @@
       height: 100%;
       z-index: -1;
       /* Place it behind everything */
+      border: none; /* Ensure no border */
 
-      /* Default (laptop) background */
-      background-image: url('https://uploads.onecompiler.io/43haghwug/43kvzx6ub/Screenshot%202025-06-06%20004225.png');
-      background-size: cover;
-      background-position: center;
+      /* This makes the iframe non-interactive INITIALLY */
+      pointer-events: none;
 
       /* Initial blurred state */
       filter: blur(5px);
@@ -32,27 +31,22 @@
       transition: filter 1.2s ease-in-out;
     }
 
-    /* Rule to un-blur the background when tracking is active */
+    /* Rule to un-blur and enable interaction when tracking is active */
     body.tracking-active #background {
       filter: blur(0px);
+      pointer-events: auto; /* ADD THIS LINE: This makes the iframe interactive */
     }
 
     /* --- Popup Container and Shrink Animation --- */
     #container {
       background: rgba(255, 255, 255, 0.85);
-      /* Slightly transparent */
       backdrop-filter: blur(5px);
-      /* Blurs the background behind the popup */
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       text-align: center;
-
-      /* Initial state (visible and normal size) */
       transform: scale(1);
       opacity: 1;
-
-      /* Smooth transition for the shrink/fade animation */
       transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-out;
     }
 
@@ -97,17 +91,10 @@
       font-size: 16px;
       color: #333;
       min-height: 24px;
-      /* Prevents layout shift */
     }
 
     /* --- Media Query for Phone Screens --- */
     @media (max-width: 768px) {
-      #background {
-        /* Use the phone background image */
-        background-image: url('https://uploads.onecompiler.io/43haghwug/43kvzx6ub/Screenshot%202025-06-06%20013821.png');
-        filter: blur(5px);
-      }
-
       #container {
         width: 65%;
         padding: 30px;

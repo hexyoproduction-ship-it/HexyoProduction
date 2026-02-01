@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
   background: #111;
   color: white;
 }
@@ -13,32 +15,18 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  overflow: visible;
+  width: 100%;
 }
 
 .form-section {
   flex: 1;
-  padding: 40px;
+  padding: 3rem;
   background-color: #111;
   display: flex;
   flex-direction: column;
   justify-content: ;
   max-width: 500px;
-}
-
-h1 {
-  font-size: 3.0rem;
-  margin-bottom: 10px;
-}
-
-p {
-  margin-bottom: 20px;
-  color: #ccc;
-}
-
-a {
-  color: #fff;
-  text-decoration: underline;
 }
 
 .brand-header {
@@ -58,25 +46,58 @@ a {
   color: #fff;
 }
 
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/*
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  height: 22px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+*/
+
 .social-btn {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   color: #000;
   border: none;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
   font-weight: bold;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   gap: 10px;
-  justify-content: center;
-  border-radius: 0px;
 }
 
 .social-btn img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .divider {

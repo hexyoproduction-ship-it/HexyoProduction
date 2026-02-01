@@ -20,7 +20,7 @@ body {
 
 .form-container {
   flex: 1;
-  max-width: 480px;
+  max-width: 500px;
   padding: 3rem;
   display: flex;
   flex-direction: column;

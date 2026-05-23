@@ -16,6 +16,67 @@
 
   <div id="map"></div>
 
+  <!-- Control Panel -->
+  <div id="control-panel" class="control-panel">
+    <div class="control-header">
+      <h3>Map Controls</h3>
+      <button id="toggle-panel-btn" class="toggle-btn">−</button>
+    </div>
+    
+    <div class="control-content">
+      <!-- Shortcuts Section -->
+      <div class="control-section">
+        <h4>Keyboard Shortcuts</h4>
+        <div class="shortcuts-list">
+          <div class="shortcut-item">
+            <span class="key">Z</span>
+            <span class="desc">Toggle auto-zoom</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="key">R</span>
+            <span class="desc">Reset view</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="key">L</span>
+            <span class="desc">Clear logs</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="key">C</span>
+            <span class="desc">Toggle panel</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="key">Arrow Keys</span>
+            <span class="desc">Rotate map</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="key">+ / −</span>
+            <span class="desc">Zoom in/out</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rotation Info Section -->
+      <div class="control-section">
+        <h4>Map Rotation</h4>
+        <div class="rotation-display">
+          <span id="rotation-value">0°</span>
+          <button id="reset-rotation-btn" class="rotation-btn">Reset</button>
+        </div>
+      </div>
+
+      <!-- Logs Section -->
+      <div class="control-section">
+        <div class="logs-header">
+          <h4>Activity Logs</h4>
+          <button id="clear-logs-btn" class="clear-btn">Clear</button>
+        </div>
+        <div id="logs-container" class="logs-container">
+          <div class="log-entry info">Map tracking script loaded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="MaliciusMap.js"></script>

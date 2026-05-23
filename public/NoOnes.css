@@ -1,102 +1,243 @@
 /* --- Base Setup --- */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      overflow: hidden;
-      /* Prevents scrollbars */
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
 
-    /* --- Background Iframe and Blur Effect --- */
-    #background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      /* Place it behind everything */
-      border: none; /* Ensure no border */
+/* --- Main Content iframe --- */
+#main-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.8s ease-out, filter 1.2s ease-in-out;
+  filter: blur(20px);
+  pointer-events: none;
+}
 
-      /* This makes the iframe non-interactive INITIALLY */
-      pointer-events: none;
+/* Make iframe interactive when location is allowed */
+body.location-allowed #main-content {
+  filter: blur(0px);
+  pointer-events: auto;
+  opacity: 1;
+}
 
-      /* Initial blurred state */
-      filter: blur(5px);
+/* --- Theme Colors --- */
+:root {
+  --color-black: #000000;
+  --color-gold: #FFFF00;
+  --color-white: #FFFFFF;
+}
 
-      /* Smooth transition for the blur effect */
-      transition: filter 1.2s ease-in-out;
-    }
+/* --- Permission Overlay --- */
+.permission-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+  pointer-events: auto;
+}
 
-    /* Rule to un-blur and enable interaction when tracking is active */
-    body.tracking-active #background {
-      filter: blur(0px);
-      pointer-events: auto; /* ADD THIS LINE: This makes the iframe interactive */
-    }
+.permission-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
-    /* --- Popup Container and Shrink Animation --- */
-    #container {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(5px);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      transform: scale(1);
-      opacity: 1;
-      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-out;
-    }
+/* --- Permission Modal --- */
+.permission-modal {
+  background: var(--color-black);
+  border: 3px solid var(--color-gold);
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(255, 255, 0, 0.3), 0 0 30px rgba(255, 255, 0, 0.15), inset 0 0 20px rgba(255, 255, 0, 0.05);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: slideUp 0.5s ease-out;
+}
 
-    /* Rule to shrink and fade out the popup when tracking is active */
-    body.tracking-active #container {
-      transform: scale(0);
-      opacity: 0;
-    }
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-    /* --- UI Elements Styling --- */
-    #driverId {
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      width: 80%;
-    }
+/* --- Permission Icon --- */
+.permission-icon {
+  font-size: 48px;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
 
-    #start-btn {
-      padding: 12px 25px;
-      font-size: 18px;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 255, 0, 0.5));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8));
+  }
+}
 
-    #start-btn:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
-    }
+/* --- Permission Modal Text --- */
+.permission-modal h2 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  color: var(--color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    #start-btn:hover:not(:disabled) {
-      background-color: #0056b3;
-    }
+.permission-modal p {
+  margin: 0 0 30px 0;
+  font-size: 15px;
+  color: var(--color-white);
+  line-height: 1.6;
+}
 
-    #status {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #333;
-      min-height: 24px;
-    }
+.permission-hint {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  font-size: 12px;
+  color: var(--color-gold);
+  font-style: italic;
+  opacity: 0.8;
+}
 
-    /* --- Media Query for Phone Screens --- */
-    @media (max-width: 768px) {
-      #container {
-        width: 65%;
-        padding: 30px;
-      }
-    }
+/* --- Permission Button --- */
+.permission-btn {
+  width: 100%;
+  padding: 14px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-black);
+  background-color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permission-btn:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  box-shadow: 0 6px 20px rgba(255, 255, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.permission-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 255, 0, 0.3);
+}
+
+.permission-btn:disabled {
+  background-color: #666666;
+  border-color: #666666;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* Loading state for button */
+.permission-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.permission-btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--color-black);
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Media Query for Tablet Screens --- */
+@media (max-width: 768px) {
+  .permission-modal {
+    padding: 40px 25px;
+    max-width: 90%;
+  }
+
+  .permission-icon {
+    font-size: 40px;
+  }
+
+  .permission-modal h2 {
+    font-size: 20px;
+  }
+
+  .permission-modal p {
+    font-size: 14px;
+  }
+}
+
+/* --- Media Query for Mobile Screens --- */
+@media (max-width: 480px) {
+  .permission-modal {
+    padding: 35px 20px;
+  }
+
+  .permission-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  .permission-modal h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .permission-modal p {
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+
+  .permission-btn {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+}
